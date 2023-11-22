@@ -1,69 +1,179 @@
+:root {
+    font-size: 62.5%;
+    --bg-color: #201f40;
+    --primary-color: #fff6f6;
+    --secondary-color: #151429;
+    --accent-color: #d90b91;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: 'VT323', monospace;
+}
+
+/* element styles */
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+svg {
+    fill: var(--primary-color);
+}
+
+
+/* whole container */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 6fr;
     grid-template-areas:
-    "start middle"
+    "start middle";
+    height: 100vh;
+    width: 100%;
 }
+
+/* start */
 
 .start-container {
+    background-color: var(--secondary-color);
+    font-size: 2rem;
     grid-area: start; 
-    
-
+    display: grid;
+    grid-template-rows: 0.5fr 2fr 3fr;
+    grid-template-areas: 
+    "sidebar1"
+    "sidebar2"
+    "sidebar3";
 }
+
+.dashboard{
+    padding: 1.5rem 0rem 0rem 1rem;
+    grid-area: sidebar1;
+}
+
+.menu {
+    grid-area: sidebar2;
+    font-size: 2.5rem;
+}
+
+.menu li, .settings li {
+    margin: 2.5rem 0rem;
+}
+
+.menu li svg, .settings li svg {
+    width: 50px;
+    margin-right: 2.5rem;
+} 
+
+.settings {
+    grid-area: sidebar3;
+    font-size: 2.5rem;
+}
+
+/* middle */
 
 .middle-container {
     grid-area: middle;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: 1.2fr 2fr 2fr 2fr;
     grid-template-areas: 
-    "search"
-    "welcome"
-    "project1"
-    "project2"
-    "project3"
+    "navbar"
+    "project1-format"
+    "project2-format"
+    "project3-format"
+}
 
+.navbar {
+    display: grid;
+    grid-area: navbar;
+    grid-template-areas: 
+    "searchbar"
+    "welcome";
 }
 
 .search-container {
-    display: grid;
-    grid-area: search;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: 
-    "searchbar profile"
-}
-
-.search {
+    margin-top: 1.5rem;
     grid-area: searchbar;
-    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 5rem;
 }
 
-.profile {
-    grid-area: profile;
-    border: 1px solid red;
+.searchbar-ui {
+    width: 700px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 2rem;
 }
 
+.l-search-ui, .r-search-ui {
+    display: flex;
+    align-items: center;
+    gap: 0rem 2rem;
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+
+.search-container svg {
+    fill: var(--primary-color);
+    transform: scale(1.5)
+}
+
+.search-container img {
+    width: 60px;
+    height: auto;
+}
+
+/* welcome msg */
 .welcome-container {
     grid-area: welcome;
-    grid-template-rows: auto;
-    display: grid;
-    grid-template-areas: 
-    "message buttons"
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 5rem;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.welcome-container img {
+    width: 90px;
+    height: 90px;
 }
 
 .message {
-    grid-area: message;
-    border: 1px solid blue;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 0rem 2rem;
+    font-size: 1.5rem;
 }
 
-.buttons {
-    grid-area: buttons;
-    border: 1px solid blue;
-
+.buttons button {
+    margin: 0rem 1rem;
+    box-sizing: content-box;
+    padding: 0.8rem 1rem;
+    border-radius: 3rem;
+    border: none;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    width:100px;
 }
 
+
+/* projs */
 .project-1-container {
-    grid-area: project1;
+    grid-area: project1-format;
     grid-template-columns: 1.8fr 1.8fr 1.6fr;
     display: grid;
     grid-template-areas: 
@@ -85,7 +195,7 @@
 }
 
 .project-2-container {
-    grid-area: project2;
+    grid-area: project2-format;
     grid-template-columns: 1.8fr 1.8fr 1.6fr;
     display: grid;
     grid-template-areas: 
@@ -103,7 +213,7 @@
 }
 
 .project-3-container {
-    grid-area: project3;
+    grid-area: project3-format;
     grid-template-columns: 1.8fr 1.8fr 1.6fr;
     display: grid;
     grid-template-areas: 
@@ -123,20 +233,4 @@
 .trending {
     grid-area: trending;
     border: 1px solid green;
-}
-
-.dashboard {
-    grid-area: sidebar1;
-    border: 1px solid black;
-}
-
-.menu {
-    grid-area: sidebar2;
-    border: 1px solid black;
-
-}
-
-.settings {
-    grid-area: sidebar3;
-    border: 1px solid black;
 }

@@ -3,11 +3,10 @@
     --bg-color: #201f40;
     --primary-color: #fff6f6;
     --secondary-color: #151429;
-    --accent-color: #d90b91;
+    --accent-color: #27264d;
 }
 
 body, html {
-    height: 100%;
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
@@ -36,8 +35,6 @@ svg {
     grid-template-columns: 1fr 6fr;
     grid-template-areas:
     "start middle";
-    height: 100vh;
-    width: 100%;
 }
 
 /* start */
@@ -52,6 +49,7 @@ svg {
     "sidebar1"
     "sidebar2"
     "sidebar3";
+    max-height: 100vh;
 }
 
 .dashboard{
@@ -86,9 +84,9 @@ svg {
     grid-template-rows: 1.2fr 2fr 2fr 2fr;
     grid-template-areas: 
     "navbar"
-    "project1-format"
-    "project2-format"
-    "project3-format"
+    "body";
+    max-height: 100vh;
+    overflow-y: scroll; 
 }
 
 .navbar {
@@ -172,65 +170,113 @@ svg {
 
 
 /* projs */
-.project-1-container {
-    grid-area: project1-format;
-    grid-template-columns: 1.8fr 1.8fr 1.6fr;
+.body-container {
+    background-color: var(--accent-color);
+    grid-area: body;
     display: grid;
-    grid-template-areas: 
-    "project1 project2 announcement"
+    grid-template-columns: 3fr 1.5fr;
+    grid-template-areas:
+    "my-projects misc";
+    font-size: 2rem;
+
 }
 
-.project1 {
-    grid-area: project1;
-    border: 1px solid green;
+.project-container {
+    grid-area: my-projects;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.project2 {
-    grid-area: project2;
-    border: 1px solid green;
-}
-.announcement {
-    grid-area: announcement;
-    border: 1px solid green;
+.project-container h2 {
+    margin-left: 3rem;
+    font-size: 2em;
 }
 
-.project-2-container {
-    grid-area: project2-format;
-    grid-template-columns: 1.8fr 1.8fr 1.6fr;
-    display: grid;
-    grid-template-areas: 
-    "project3 project4 ."
+.project1-container,
+.project2-container,
+.project3-container {
+    display: flex;
+    justify-content: center;
 }
 
-.project3 {
-    grid-area: project3;
-    border: 1px solid green;
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 1rem 3rem;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    padding: 0rem 2rem;;
+    width: 400px;
+    height: 250px;
+    border-radius: 1.5rem;
+    border-right: 6px solid hsl(257, 31%, 51%, 30%);
+    transition:all 0.4s ease-in;
 }
 
-.project4 {
-    grid-area: project4;
-    border: 1px solid green;
+.project:hover {
+    transform: translateY(-5px);
 }
 
-.project-3-container {
-    grid-area: project3-format;
-    grid-template-columns: 1.8fr 1.8fr 1.6fr;
-    display: grid;
-    grid-template-areas: 
-    "project5 project6 trending"
+.project h3 {
+    margin-bottom: 0;
+    font-size: 1.2em;
+    color: #725da9;
+    text-shadow: 2px 2px 1px black;
 }
 
-.project5 {
-    grid-area: project5;
-    border: 1px solid green;
+.misc-container {
+    grid-area: misc;
+    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.project6 {
-    grid-area: project6;
-    border: 1px solid green;
+.announcement-container {
+    grid-area: announcement-log;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    width: 400px;
+    border-radius: 1.5rem;
+    transition:all 0.4s ease-in;
+    padding: 2rem 2rem;
+
 }
 
-.trending {
-    grid-area: trending;
-    border: 1px solid green;
+.misc-container h2 {
+    margin-left: 3rem;
+    font-size: 2em;
 }
+
+.announcement-container li {
+    list-style-type: disc;
+}
+
+.a1, .a2, .a3 {
+    width: 390px;
+    border-bottom: 1px solid var(--primary-color)
+}
+
+.rank-1 {
+    display: flex;
+}
+
+.ranking-container h4, .ranking-container p {
+    margin: 0;
+}
+/* .ranking-container {
+    display: flex;
+} */
+
+.rank-1 img {
+    width: 60px;
+    margin-right: 1rem;
+    transform: translateY(-0.8rem);
+}
+
